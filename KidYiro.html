@@ -1,0 +1,178 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>KidYiro</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: left-aligned single column. Oversized name as the hero, then link rows, then a plain artist sheet. */
+:root {
+  --bg: #0f1530;
+  --bg-2: #171e42;
+  --line: #2a3263;
+  --fg: #ece9f7;
+  --muted: #a7acd0;
+  --accent: #ff4d8d;
+  --accent-ink: #1a0614;
+  --f-display: "Bricolage Grotesque", "Arial Narrow", Arial, sans-serif;
+  --f-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--f-body);
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 0;
+  padding-block: 28px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 880px; margin: 0 auto; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+.top {
+  display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between;
+  font-family: var(--f-mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+  border-bottom: 1px solid var(--line); padding-bottom: 14px;
+}
+.hero { padding-block: 56px 48px; }
+.hero .kicker { font-family: var(--f-mono); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
+h1 {
+  font-family: var(--f-display); font-weight: 800; font-size: clamp(3.6rem, 17vw, 10rem);
+  line-height: .86; letter-spacing: -.035em; margin: 0; text-transform: uppercase; text-wrap: balance;
+}
+h1 span { color: var(--accent); }
+.hero p.lead { max-width: 52ch; margin: 28px 0 0; font-size: 1.15rem; color: var(--muted); }
+.hero p.lead strong { color: var(--fg); font-weight: 500; }
+
+h2 {
+  font-family: var(--f-display); font-weight: 500; font-size: 1.5rem; letter-spacing: -.01em; margin: 0 0 18px; text-wrap: balance;
+}
+section { padding-block: 36px; border-top: 1px solid var(--line); }
+
+.links { display: grid; gap: 12px; }
+.link {
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px;
+  padding: 18px 20px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 6px;
+  text-decoration: none; transition: border-color .15s, transform .15s;
+}
+.link:hover { border-color: var(--accent); transform: translateX(3px); }
+.link.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.link .t { min-width: 0; }
+.link .name { font-family: var(--f-display); font-weight: 800; font-size: 1.25rem; line-height: 1.2; }
+.link .sub { font-family: var(--f-mono); font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+.link.primary .sub { color: var(--accent-ink); opacity: .8; }
+.link .go { font-family: var(--f-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+
+dl.sheet { margin: 0; display: grid; grid-template-columns: minmax(0, 11rem) minmax(0, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+dl.sheet dt, dl.sheet dd { margin: 0; padding: 14px 18px; border-top: 1px solid var(--line); min-width: 0; }
+dl.sheet dt:first-of-type, dl.sheet dt:first-of-type + dd { border-top: 0; }
+dl.sheet dt { font-family: var(--f-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); background: var(--bg-2); }
+dl.sheet dd { overflow-wrap: anywhere; }
+dl.sheet dd.mono { font-family: var(--f-mono); font-size: 14px; }
+@media (max-width: 520px) {
+  dl.sheet { grid-template-columns: minmax(0, 1fr); }
+  dl.sheet dt { border-top: 1px solid var(--line); padding-bottom: 4px; }
+  dl.sheet dd { border-top: 0; padding-top: 6px; }
+  dl.sheet dt:first-of-type { border-top: 0; }
+  .link { grid-template-columns: minmax(0, 1fr); }
+}
+
+.contact { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.mail { font-family: var(--f-mono); font-size: 1.05rem; padding: 12px 16px; border: 1px dashed var(--accent); border-radius: 6px; overflow-wrap: anywhere; user-select: all; }
+button.copy {
+  font: inherit; font-family: var(--f-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase;
+  background: transparent; color: var(--fg); border: 1px solid var(--line); border-radius: 6px; padding: 12px 16px; cursor: pointer;
+}
+button.copy:hover { border-color: var(--accent); }
+.note { color: var(--muted); font-size: 15px; margin: 16px 0 0; max-width: 60ch; }
+
+footer { border-top: 1px solid var(--line); padding-top: 18px; font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 24px; justify-content: space-between; }
+@media (prefers-reduced-motion: reduce) { .link { transition: none; } .link:hover { transform: none; } }
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <span>Artista · Calientalo Media</span>
+    <span>Sergio Delgado García</span>
+  </div>
+
+  <header class="hero">
+    <p class="kicker">Página oficial del artista</p>
+    <h1>Kid<span>Yiro</span></h1>
+    <p class="lead"><strong>KidYiro</strong> es el nombre artístico de <strong>Sergio Delgado García</strong>. Su música está en Spotify y sus vídeos en YouTube. Forma parte del sello <strong>Calientalo Media</strong>.</p>
+  </header>
+
+  <section aria-labelledby="escucha">
+    <h2 id="escucha">Escucha y sigue a KidYiro</h2>
+    <div class="links">
+      <a class="link primary" href="https://open.spotify.com/intl-es/artist/4GXtqrORjLba2EDhsurtTg" target="_blank" rel="noopener">
+        <span class="t"><span class="name">Spotify</span><br><span class="sub">Perfil de artista · KidYiro</span></span>
+        <span class="go">Escuchar →</span>
+      </a>
+      <a class="link" href="https://www.youtube.com/@Kidyiro7" target="_blank" rel="noopener">
+        <span class="t"><span class="name">YouTube</span><br><span class="sub">youtube.com/@Kidyiro7</span></span>
+        <span class="go">Ver canal →</span>
+      </a>
+      <a class="link" href="https://www.instagram.com/kidyiro7/" target="_blank" rel="noopener">
+        <span class="t"><span class="name">Instagram</span><br><span class="sub">@kidyiro7</span></span>
+        <span class="go">Seguir →</span>
+      </a>
+    </div>
+  </section>
+
+  <section aria-labelledby="ficha">
+    <h2 id="ficha">Ficha del artista</h2>
+    <dl class="sheet">
+      <dt>Nombre artístico</dt><dd>KidYiro</dd>
+      <dt>Nombre real</dt><dd>Sergio Delgado García</dd>
+      <dt>Sello</dt><dd>Calientalo Media</dd>
+      <dt>Spotify</dt><dd class="mono">open.spotify.com/artist/4GXtqrORjLba2EDhsurtTg</dd>
+      <dt>YouTube</dt><dd class="mono">@Kidyiro7</dd>
+      <dt>Instagram</dt><dd class="mono">@kidyiro7</dd>
+      <dt>Correo</dt><dd class="mono">kidyiro7@gmail.com</dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="contacto">
+    <h2 id="contacto">Contacto</h2>
+    <div class="contact">
+      <span class="mail" id="mail">kidyiro7@gmail.com</span>
+      <button class="copy" id="copy" type="button">Copiar correo</button>
+    </div>
+    <p class="note">Para conciertos, colaboraciones y prensa, escribe a este correo o mándale un mensaje directo por Instagram.</p>
+  </section>
+
+  <footer>
+    <span>© 2026 KidYiro</span>
+    <span>Gestión: Calientalo Media</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy');
+  var mail = document.getElementById('mail');
+  btn.addEventListener('click', function () {
+    var text = mail.textContent.trim();
+    function selectFallback() {
+      var r = document.createRange(); r.selectNodeContents(mail);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Seleccionado';
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () {
+        btn.textContent = 'Copiado';
+        setTimeout(function () { btn.textContent = 'Copiar correo'; }, 1800);
+      }, selectFallback);
+    } catch (e) { selectFallback(); }
+  });
+})();
+</script>
+
+</body></html>
